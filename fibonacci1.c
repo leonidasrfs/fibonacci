@@ -3,11 +3,20 @@
 cc -g -o fibonacci fibonacci.c
 */
 #include <stdio.h> // for printf()
+
+long fibonacciRecur(long f1, long f2, int x, int n)
+{
+  if(x==n){return f2;}
+  else{
+    return fibonacciRecur(f2,f2+f1,x+1,n);
+  }
+} // recursive fibonacci function
+
 int main (int argc, char *argv[])
 {
     //Declaring n and fibonacci Nth number
     int n = 0;
-    int fnum = 0;
+    long fnum = 0;
     int CalcOption = 0;
 
     //Taking user's input, n
@@ -20,9 +29,9 @@ int main (int argc, char *argv[])
     //Calculate Nth fibonacci number based on inputed n using simple method
 
     if(CalcOption==1){
-      int f1 = 1;
-      int f2 = 1;
-      int fint;
+      long f1 = 1;
+      long f2 = 1;
+      long fint;
       int x;
       for (x=3; x<n+1; x++){
           fint = f1;
@@ -31,14 +40,14 @@ int main (int argc, char *argv[])
           fnum = f2;
       }
     }else if (CalcOption==2) {
-      /* code */
+      fnum=fibonacciRecur(1,1,2,n);
     }
 
     //Output result
     printf ("the Nth Fibonacci number for n = ");
     printf("%d\n",n);
     printf (" is:\n");
-    printf("%d\n",fnum);
+    printf("%ld\n",fnum);
 
  return (0);
 } // main
